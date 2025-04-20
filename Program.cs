@@ -249,6 +249,8 @@ namespace Connect_Four_Final_Project_OOP_2025
                 //checking if the column typed is not in the valid range
                 if(column < 0 || column >= Columns)
                 {
+                    Console.WriteLine("Invalid column. Try again.");
+                    Thread.Sleep(1000);
                     continue;
 
                 }
@@ -256,6 +258,8 @@ namespace Connect_Four_Final_Project_OOP_2025
                 //checking if a column is full
                 if (board[0, column] != ' ')
                 {
+                    Console.WriteLine("That column is full! Try another one.");
+                    Thread.Sleep(1000); // Small delay so player can read the message
                     continue;
                 }
 
@@ -264,6 +268,12 @@ namespace Connect_Four_Final_Project_OOP_2025
                     if (board[row, column] == ' ')
                     {
                         board[row, column] = currentPlayer.Disc;
+                        
+                        if (currentPlayer is ComputerPlayer)
+                {
+                    Console.WriteLine($"{currentPlayer.Name} placed a disc in column {column + 1}");
+                    Thread.Sleep(1000);
+                }
                         validMove = true;
                         return;
                     }
